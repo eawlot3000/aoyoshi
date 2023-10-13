@@ -1,0 +1,18 @@
+========== TODO ==========
+
+
+1.
+----
+* now: after modified code you would run that again. there is no alternative way to check if these images were there or not. (for now, all procedure would starts from product one, and go through each of these invaild pics url in each product page again (high risk also lol)
+
+* want: after you get the right product url and get the proper title (product name) you should check if there is a identical product name's dir in my working dir, if so, check how many of picture inside. since we got pics in this format "[INDEX].[FORMAT]" right? so if there are 1,2,3 images already in my dir, you can try only once in the further web url. i.e. if there was a image called 3.jpg in my dir, you should try starting checking with the fourth, of course you should check with the status code. if there are one red one. the non-200 code. just exit this round and head to the next one.
+
+
+2. 
+----
+* now: after downloading vaild pics (green), it would still access to the next few ones until 10 (in your code) and print all of them are red (invaild) because they just did't exist, so these red printings are useless in this round. and cause confusing, you can tell the difference if there really had some errors and causing problems downloading the pics or its just there were no more left on the url
+
+* want: do the same. but if you previouse in this round have successfully downloaded pic and move into your dir, stop this round if you continuously had two red error, whether 403 or 404, or whatever. if you just had two red ones just jump into the product page. i.e. got 3.jpg and 4.jpg, and 5 and 6 were al red. do not go until 10, just stop and move to the next page.
+
+
+
