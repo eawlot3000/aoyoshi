@@ -68,20 +68,22 @@ def download_images(product_number, product_name):
 
 def main():
   print("\n==================== Starting downloading...====================\n")
-  for i in range(1, 300): # TODO: change iteration!!
-
-    #time.sleep(5) # wait 5 seconds whenever fetching a new product page
-
-    url = BASE_URL + str(i).zfill(2)
-    response = requests.head(url)  # This is to mimic the curl -I command
+  
+  processed_products = set()  # Set to remember processed product names
+  
+  for i in range(1000, 10000000000): #TODO
+    url = BASE_URL + str(i).zfill(10)
+    response = requests.head(url)
         
     if response.status_code == 200:
       product_name = get_product_name(url)
       print("============================================================\n> Working with: ", product_name)
-      if product_name:
+      if product_name and product_name not in processed_products: # set() is used to avoid duplicate downloads
         download_images(str(i).zfill(2), product_name)
+        processed_products.add(product_name)  # Add to set after processing
     else:
       print(colored(f"{url} is not valid. Skipping...", "red"))
+
 
 
 if __name__ == "__main__":
